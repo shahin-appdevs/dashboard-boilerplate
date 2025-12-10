@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* :root {
   --background: #ffffff;
@@ -28,8 +29,23 @@ body {
 } */
 
 @theme {
+  /* breakpoints */
   --breakpoint-2xl: 100rem;
   --breakpoint-3xl: 120rem;
+
+  /* colors */
+  --color-primary-50: #e6faf5;
+  --color-primary-100: #c0f3e6;
+  --color-primary-200: #96ebd6;
+  --color-primary-300: #6de2c6;
+  --color-primary-400: #47dab7;
+  --color-primary-500: #0ebe98; /* main */
+  --color-primary-600: #0ba483;
+  --color-primary-700: #098a6f;
+  --color-primary-800: #067f62;
+  --color-primary-900: #045749;
+
+  --color-primary: var(--color-primary-500);
 }
 
 .swiper-pagination-bullet {

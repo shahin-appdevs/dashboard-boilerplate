@@ -55,19 +55,23 @@ const columns = [
       <div className="flex items-center gap-3">
         <div
           className={`w-10 h-10 flex items-center justify-center rounded-full ${
-            record.direction === "in" ? "bg-gray-100" : "bg-gray-100"
+            record.direction === "in"
+              ? "bg-gray-100 dark:bg-gray-300 dark:text-neutral-800"
+              : "bg-gray-100 dark:bg-gray-300 dark:text-neutral-800"
           }`}
         >
           {record.direction === "in" ? (
-            <ArrowDownOutlined className="text-gray-500 text-lg" />
+            <ArrowDownOutlined className="text-gray-500 rotate-45 text-lg" />
           ) : (
-            <ArrowUpOutlined className="text-gray-500 text-lg" />
+            <ArrowUpOutlined className="text-gray-500 text-lg rotate-45" />
           )}
         </div>
 
         <div>
-          <p className="font-semibold text-gray-800">{record.type}</p>
-          <p className="text-gray-400 text-sm">{record.date}</p>
+          <p className="font-medium text-gray-800 dark:text-neutral-100">
+            {record.type}
+          </p>
+          <p className="text-gray-400  text-sm">{record.date}</p>
         </div>
       </div>
     ),
@@ -76,7 +80,9 @@ const columns = [
   {
     title: "Trx ID",
     dataIndex: "id",
-    render: (id) => <span className="text-gray-600">{id}</span>,
+    render: (id) => (
+      <span className="text-gray-600 dark:text-neutral-100">{id}</span>
+    ),
   },
 
   {
@@ -99,7 +105,7 @@ const columns = [
     title: "Status",
     dataIndex: "status",
     render: (status) => (
-      <span className="px-3 py-1 rounded-full text-sm bg-green-100 text-green-700">
+      <span className="px-3 py-1 rounded-full text-sm bg-green-100 dark:bg-green-700 dark:text-green-100 text-green-700">
         {status}
       </span>
     ),
@@ -108,10 +114,12 @@ const columns = [
 
 export default function TransactionTable() {
   return (
-    <Card className=" mt-5! lg:mt-6!  overflow-x-auto">
+    <Card className=" mt-5! lg:mt-6!  overflow-x-auto dark:border-neutral-900!">
       {/* Header */}
       <div className="flex flex-col lg:flex-row gap-4 justify-between items-center mb-4">
-        <h2 className="text-xl font-bold text-gray-800">Transaction History</h2>
+        <h2 className="text-xl font-bold text-neutral-800 dark:text-neutral-100">
+          Transaction History
+        </h2>
 
         <div className="flex items-center gap-3">
           <Input
@@ -130,8 +138,10 @@ export default function TransactionTable() {
         columns={columns}
         dataSource={data}
         pagination={false}
-        className="rounded-xl min-w-[700px] border! border-gray-200!"
-        rowClassName={() => " even:bg-gray-50 hover:bg-gray-100 rounded-xl! "}
+        className="rounded-xl bg-slate-900 min-w-[700px] border! border-gray-200!  dark:border-neutral-950!"
+        rowClassName={() =>
+          " even:bg-gray-50  dark:even:bg-slate-950 rounded-xl!  "
+        }
       />
     </Card>
   );

@@ -1,19 +1,26 @@
 "use client";
-import { Layout, Menu } from "antd";
-import {
-  DashboardOutlined,
-  UserOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
+import { Layout } from "antd";
 import { useState } from "react";
-import Image from "next/image";
 
-import LayoutHeader from "./_components/homepage/Layouts/LayoutHeader";
-import LayoutSidebar from "./_components/homepage/Layouts/LayoutSidebar";
+// import LayoutHeader from "./_components/homepage/Layouts/LayoutHeader";
+// import LayoutSidebar from "./_components/homepage/Layouts/LayoutSidebar";
 
-const logo = "/images/logo/logo.png";
+import dynamic from "next/dynamic";
 
-const { Sider, Content } = Layout;
+const LayoutSidebar = dynamic(
+  () => import("./_components/homepage/Layouts/LayoutSidebar"),
+  {
+    ssr: false,
+  }
+);
+const LayoutHeader = dynamic(
+  () => import("./_components/homepage/Layouts/LayoutHeader"),
+  {
+    ssr: false,
+  }
+);
+
+const { Content } = Layout;
 
 export default function DashboardLayout({ children }) {
   const [collapsed, setCollapsed] = useState(false);
@@ -29,7 +36,7 @@ export default function DashboardLayout({ children }) {
           style={{
             margin: "24px 16px",
             padding: 24,
-            background: "#fff",
+            // background: "#fff",
             overflow: "hidden",
           }}
         >

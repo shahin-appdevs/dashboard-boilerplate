@@ -27,8 +27,10 @@ export default function VirtualCardSlider() {
   ];
 
   return (
-    <div className="  p-5 rounded-xl bg-white shadow-sm mt-4 lg:mt-6">
-      <h2 className="text-xl font-bold text-gray-800 mb-4">My Virtual Card</h2>
+    <div className="  p-5 rounded-xl bg-white dark:bg-slate-900 shadow-sm mt-4 lg:mt-6">
+      <h2 className="text-xl font-bold text-gray-800 dark:text-slate-100 mb-4">
+        My Virtual Card
+      </h2>
 
       {/* Swiper Carousel */}
       <Swiper

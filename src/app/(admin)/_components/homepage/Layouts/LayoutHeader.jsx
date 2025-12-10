@@ -1,14 +1,20 @@
 "use client";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import LucideIcon from "@/components/LucideIcon";
 import { Header } from "antd/es/layout/layout";
 import ProfileDropdown from "../../header/ProfileDropdown";
+import { useTheme } from "@/contexts/ThemeContextProvider";
 
 const LayoutHeader = ({ collapsed, setCollapsed }) => {
   const [theme, setTheme] = useState("light");
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+  const { mode, toggleTheme } = useTheme();
+
+  // useEffect(() => {
+  //   toggleTheme();
+  // }, [theme, toggleTheme]);
 
   return (
     <Header
@@ -16,8 +22,8 @@ const LayoutHeader = ({ collapsed, setCollapsed }) => {
         padding: "0 16px",
         display: "flex",
         alignItems: "center",
-        background: "#fff",
-        boxShadow: "0 2px 8px #f0f1f2",
+        background: mode === "dark" ? "oklch(20.8% 0.042 265.755)" : "#fff",
+        // boxShadow: "0 2px 8px #f0f1f2",
         position: "sticky",
         top: "0",
         zIndex: "30",
@@ -41,7 +47,9 @@ const LayoutHeader = ({ collapsed, setCollapsed }) => {
         <div className="flex items-center justify-between! ">
           <div className="lg:hidden"></div>
           <div className="hidden lg:block">
-            <span className="">Welcome Back,</span>
+            <span className="text-neutral-800 dark:text-white ">
+              Welcome Back,
+            </span>
             <span className="ms-2">Md. Shahin Hossain</span>
           </div>
 
@@ -49,13 +57,13 @@ const LayoutHeader = ({ collapsed, setCollapsed }) => {
             <div className="flex items-center gap-6 bg-transparent p-4">
               {/* Theme Switch */}
               <button
-                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+                onClick={() => toggleTheme()}
                 className="flex items-center bg-white rounded-full px-1 py-1 shadow-sm border border-gray-200 transition"
               >
                 {/* Moon */}
                 <div
                   className={`w-8 h-8 flex items-center justify-center rounded-full transition ${
-                    theme === "dark"
+                    mode === "dark"
                       ? "bg-[#002d25] text-white"
                       : "text-[#002d25]"
                   }`}
@@ -66,7 +74,7 @@ const LayoutHeader = ({ collapsed, setCollapsed }) => {
                 {/* Sun */}
                 <div
                   className={`w-8 h-8 flex items-center justify-center rounded-full transition ${
-                    theme === "light"
+                    mode === "light"
                       ? "bg-[#002d25] text-white"
                       : "text-[#002d25]"
                   }`}
@@ -78,7 +86,7 @@ const LayoutHeader = ({ collapsed, setCollapsed }) => {
               {/* Globe */}
               <LucideIcon
                 name="Globe"
-                className="text-[#002d25] cursor-pointer hover:opacity-70 transition"
+                className="text-[#002d25] dark:text-white cursor-pointer hover:opacity-70 transition"
                 size={24}
               />
 
@@ -86,7 +94,7 @@ const LayoutHeader = ({ collapsed, setCollapsed }) => {
               <div className="relative cursor-pointer">
                 <LucideIcon
                   name="Bell"
-                  className="text-[#002d25] hover:opacity-70 transition"
+                  className="text-[#002d25] dark:text-white hover:opacity-70 transition"
                   size={24}
                 />
                 <span className="w-3 h-3 rounded-full bg-green-500 absolute -top-1 -right-1 border-2 border-white"></span>
@@ -96,7 +104,7 @@ const LayoutHeader = ({ collapsed, setCollapsed }) => {
               <div className="group/profile relative ">
                 <Image
                   onClick={() => setShowProfileDropdown(!showProfileDropdown)}
-                  src="/icons/avater.png"
+                  src="https://i.pravatar.cc/60"
                   alt="User"
                   height={100}
                   width={100}

@@ -10,10 +10,10 @@ const Stats = () => {
         {/* Left Section */}
         <div className="flex items-center gap-4 mb-4">
           <div>
-            <p className="text-gray-500 text-sm">Total Wallet Balance</p>
-            <h2 className="text-2xl font-semibold text-green-900">
-              $98,000.00
-            </h2>
+            <p className="text-gray-500 dark:text-neutral-100 text-sm">
+              Total Wallet Balance
+            </p>
+            <h2 className="text-2xl font-semibold text-primary">$98,000.00</h2>
           </div>
           <button className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition">
             <LucideIcon name={"Eye"} className="w-5 h-5 text-gray-500" />

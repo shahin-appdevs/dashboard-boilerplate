@@ -1,6 +1,7 @@
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./styles/globals.css";
+import { ThemeProvider } from "@/contexts/ThemeContextProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +24,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased max-w-[1920px] mx-auto w-full shadow`}
       >
-        <AntdRegistry>{children}</AntdRegistry>
+        <AntdRegistry>
+          <ThemeProvider>{children}</ThemeProvider>
+        </AntdRegistry>
       </body>
     </html>
   );
