@@ -19,21 +19,44 @@ export default function ProfileDropdown() {
           alt="profile"
         />
         <div>
-          <h3 className="font-semibold text-gray-800">Tomas William</h3>
-          <p className="text-sm text-gray-500">william@gmail.com</p>
+          <h3 className="font-semibold text-gray-800 dark:text-neutral-50">
+            Tomas William
+          </h3>
+          <p className="text-sm text-gray-500 dark:text-neutral-400">
+            william@gmail.com
+          </p>
         </div>
       </div>
 
       {/* Menu List */}
-      <div className="mt-2 space-y-1">
-        <MenuItem icon={<SendOutlined />} label="Send Money" />
-        <MenuItem icon={<PlusCircleOutlined />} label="Add Funds" />
-        <MenuItem icon={<ArrowDownOutlined />} label="Withdraw" />
+      <div className="mt-2 space-y-1 ">
+        <MenuItem
+          icon={<SendOutlined className="dark:text-neutral-300!" />}
+          label={<span className="dark:text-neutral-300!">Send Money</span>}
+        />
+        <MenuItem
+          icon={<PlusCircleOutlined className="dark:text-neutral-300!" />}
+          label={<span className="dark:text-neutral-300!">Add Fund</span>}
+        />
+        <MenuItem
+          icon={<ArrowDownOutlined className="dark:text-neutral-300!" />}
+          label={<span className="dark:text-neutral-300!">Withdraw</span>}
+        />
 
         <Divider />
 
-        <MenuItem icon={<UserOutlined />} label="KYC Verification" />
-        <MenuItem icon={<SafetyOutlined />} label="2FA Verification" />
+        <MenuItem
+          icon={<UserOutlined className="dark:text-neutral-300!" />}
+          label={
+            <span className="dark:text-neutral-300!">KYC Verification</span>
+          }
+        />
+        <MenuItem
+          label={
+            <span className="dark:text-neutral-300!">2FA Verification</span>
+          }
+          icon={<SafetyOutlined className="dark:text-neutral-300!" />}
+        />
 
         <Divider />
 
@@ -48,7 +71,7 @@ function MenuItem({ icon, label, danger }) {
     <button
       className={`w-full flex items-center gap-3 px-1 py-2 rounded-lg text-left 
         ${danger ? "text-red-600 font-semibold" : "text-gray-700"} 
-        hover:bg-gray-100 transition`}
+        hover:bg-gray-100 dark:hover:bg-primary-500 dark:hover:text-neutral-50 dark:font-medium transition`}
     >
       <span className="text-xl">{icon}</span>
       <span className="text-sm">{label}</span>
